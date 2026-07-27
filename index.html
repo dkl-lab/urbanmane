@@ -1,17 +1,60 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mane District — vetted mobile hairstylists, braiders and makeup artists delivered to your door across the UK. Book now in London and Manchester.">
-<meta name="keywords" content="mobile hairstylist UK, home hair appointment London, braiding at home, mobile beautician, Braids Champs, knotless box braids, natural hair stylist">
+<meta name="description" content="Mane District — vetted mobile hairstylists, braiders and makeup artists delivered to your door anywhere in the UK. London, Manchester, Birmingham, Bristol, Leeds, Edinburgh and beyond.">
+<meta name="keywords" content="mobile hairstylist UK, home hair appointment, braiding at home, mobile beautician UK, Braids Champs, knotless box braids, natural hair stylist, mobile hair London, mobile hair Manchester, mobile hair Birmingham, mobile hair Bristol, mobile hair Leeds, mobile hair Edinburgh, mobile hair Sheffield, mobile hair Liverpool, mobile hair Newcastle, mobile hair Nottingham, mobile hair Cardiff, mobile hair Glasgow, afro hair mobile, textured hair specialist UK">
 <meta property="og:title" content="Mane District — Salon Service, Delivered To You">
 <meta property="og:description" content="Vetted mobile stylists and beauticians brought directly to your home, hotel or venue across the UK.">
 <meta property="og:url" content="https://manedistrict.vercel.app">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://manedistrict.vercel.app">
-<title>Mane District — Salon Service, Delivered To You</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://manedistrict.vercel.app/#business",
+      "name": "Mane District",
+      "description": "Vetted mobile hairstylists, braiders, nail technicians and makeup artists delivered to your door anywhere in the UK.",
+      "url": "https://manedistrict.vercel.app",
+      "email": "urbanmane@protonmail.com",
+      "areaServed": {"@type": "Country","name": "United Kingdom"},
+      "serviceArea": [
+        {"@type":"City","name":"London"},{"@type":"City","name":"Manchester"},
+        {"@type":"City","name":"Birmingham"},{"@type":"City","name":"Bristol"},
+        {"@type":"City","name":"Leeds"},{"@type":"City","name":"Edinburgh"},
+        {"@type":"City","name":"Sheffield"},{"@type":"City","name":"Liverpool"},
+        {"@type":"City","name":"Newcastle"},{"@type":"City","name":"Nottingham"},
+        {"@type":"City","name":"Cardiff"},{"@type":"City","name":"Glasgow"}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Mobile Beauty Services",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile Hairstyling and Colour"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Knotless Box Braids at Home"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cornrows at Home"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile Makeup Artist"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Mobile Manicure and Pedicure"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bridal Hair and Makeup"}}
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Braids Champs — Mobile Braiding Service",
+      "provider": {"@id": "https://manedistrict.vercel.app/#business"},
+      "description": "DBS-checked braiding specialists for box braids, cornrows, goddess braids, faux locs and protective styles, delivered to your home anywhere in the UK.",
+      "areaServed": {"@type": "Country","name": "United Kingdom"}
+    }
+  ]
+}
+</script>
+<title>Mane District | Mobile Hairstylists, Braiders &amp; Beauty Professionals UK</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -78,7 +121,6 @@
   .hub-card .hub-arrow{margin-top:14px;font-size:0.85rem;color:var(--rose);font-weight:600;}
   .section{padding:88px 0;border-bottom:1px solid var(--line);}
   .section-eyebrow{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--rose);font-weight:600;margin-bottom:14px;display:block;}
-  .section h2{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;}
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   @media(max-width:880px){.services-grid{grid-template-columns:1fr;}}
   .svc-card{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:28px 26px;position:relative;}
@@ -100,6 +142,21 @@
   .braids-list li .style-dur{display:block;font-size:0.8rem;opacity:0.6;margin-top:3px;}
   .braids-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;}
   .braids-cta .btn-primary{background:var(--brass);border-color:var(--brass);color:var(--ink);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px;}
+  @media(max-width:880px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:500px){.gallery-grid{grid-template-columns:1fr 1fr;gap:8px;}}
+  .gallery-item{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;cursor:pointer;background:var(--ink);}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+  .gallery-item:hover img{transform:scale(1.05);}
+  .gallery-item .g-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(27,26,24,0.85));color:var(--paper);font-size:0.78rem;padding:24px 12px 10px;opacity:0;transition:opacity .3s;}
+  .gallery-item:hover .g-label{opacity:1;}
+  .gallery-badge{display:inline-flex;align-items:center;gap:6px;background:var(--brass);color:var(--ink);font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border-radius:30px;margin-bottom:20px;}
+  .gallery-note{font-size:0.82rem;opacity:0.6;margin-top:16px;line-height:1.6;}
+  .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(27,26,24,0.95);align-items:center;justify-content:center;padding:20px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:4px;}
+  .lightbox-close{position:absolute;top:20px;right:24px;color:var(--paper);font-size:2rem;cursor:pointer;background:none;border:none;line-height:1;opacity:0.8;}
+  .lightbox-caption{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:var(--paper);font-size:0.88rem;opacity:0.75;}
   .route-line{display:grid;grid-template-columns:repeat(4,1fr);position:relative;}
   @media(max-width:880px){.route-line{grid-template-columns:1fr;gap:36px;}}
   .route-line::before{content:'';position:absolute;top:13px;left:0;right:0;height:2px;background:repeating-linear-gradient(to right,var(--ink) 0 10px,transparent 10px 18px);opacity:0.35;}
@@ -176,7 +233,6 @@
   .admin-logout{font-size:0.85rem;text-decoration:underline;cursor:pointer;opacity:0.7;background:none;border:none;font-family:'Work Sans',sans-serif;color:var(--ink);}
   .admin-error{display:none;color:var(--rose);font-size:0.88rem;margin-top:10px;}.admin-error.show{display:block;}
   .lookup-box{background:var(--paper-2);border:1px solid var(--line);border-radius:8px;padding:28px;max-width:480px;}
-  .lookup-box .field{margin-bottom:14px;}
   .status-banner{margin-top:32px;border:1px solid var(--line);border-radius:8px;background:var(--paper-2);padding:28px;display:none;}.status-banner.show{display:block;}
   .status-banner .app-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;}
   .status-banner .app-meta{font-size:0.85rem;opacity:0.65;margin-top:4px;}
@@ -191,7 +247,6 @@
   .config-warning{background:rgba(166,88,79,0.1);border:1px dashed var(--rose);border-radius:6px;padding:14px 16px;font-size:0.85rem;line-height:1.6;margin-bottom:28px;max-width:760px;}
   .product-search-bar{display:flex;gap:12px;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .product-search-input{flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--line);border-radius:4px;background:var(--paper);font-family:'Work Sans',sans-serif;font-size:0.95rem;color:var(--ink);}
-  .product-search-input:focus{outline:2px solid var(--brass);outline-offset:1px;}
   .filter-pills{display:flex;gap:8px;flex-wrap:wrap;}
   .filter-pill{border:1px solid var(--line);border-radius:30px;padding:7px 14px;font-size:0.82rem;background:var(--paper-2);cursor:pointer;font-family:'Work Sans',sans-serif;color:var(--ink);}
   .filter-pill.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
@@ -283,7 +338,7 @@
       <div>
         <span class="eyebrow">Now booking across the UK</span>
         <h1>The salon chair,<br><em>delivered</em> to your door.</h1>
-        <p class="lead">Vetted hairstylists and beauticians, fully licensed and background-checked, who bring the full studio experience to your home, hotel, or venue — on your schedule, not a salon's.</p>
+        <p class="lead">Vetted hairstylists, braiders, and beauticians — fully licensed, DBS-checked, and ready to come to you anywhere in the UK. Your home, hotel, or venue. Your schedule.</p>
         <div class="hero-actions">
           <a href="#book" class="btn-primary" data-link="book">Book a stylist →</a>
           <a href="#how" class="btn-ghost" data-link="how">See how it works</a>
@@ -314,7 +369,7 @@
         <a href="#how" class="hub-card" data-link="how"><span class="hub-num">03</span><h3>How It Works</h3><p>From booking to finished look, in four simple steps.</p><span class="hub-arrow">See the process →</span></a>
         <a href="#safety" class="hub-card" data-link="safety"><span class="hub-num">04</span><h3>Trust &amp; Safety</h3><p>Every professional is licensed, background-checked, and insured.</p><span class="hub-arrow">Read our standards →</span></a>
         <a href="#packages" class="hub-card" data-link="packages"><span class="hub-num">05</span><h3>Membership</h3><p>Pay-as-you-go, monthly membership, or corporate plans.</p><span class="hub-arrow">Compare plans →</span></a>
-        <a href="#cities" class="hub-card" data-link="cities"><span class="hub-num">06</span><h3>Cities We Cover</h3><p>Live in London and Manchester, expanding across the UK.</p><span class="hub-arrow">Check your city →</span></a>
+        <a href="#cities" class="hub-card" data-link="cities"><span class="hub-num">06</span><h3>Cities We Cover</h3><p>Active in London and Manchester. Booking requests accepted nationwide.</p><span class="hub-arrow">Check your city →</span></a>
         <a href="#apply" class="hub-card" data-link="apply"><span class="hub-num">07</span><h3>Apply to Join</h3><p>Stylists and beauticians — bring your craft to our client network.</p><span class="hub-arrow">Apply now →</span></a>
         <a href="#help" class="hub-card" data-link="help"><span class="hub-num">08</span><h3>Help Centre</h3><p>Answers to common questions about booking, payment, and safety.</p><span class="hub-arrow">Get help →</span></a>
         <a href="#book" class="hub-card" data-link="book"><span class="hub-num">09</span><h3>Book a Stylist</h3><p>Ready to go? Submit your booking request in under two minutes.</p><span class="hub-arrow">Book now →</span></a>
@@ -334,7 +389,7 @@
       <div class="svc-card"><span class="svc-tag">Premium</span><h3>Full Beauty Transformation</h3><p class="desc">Hair, makeup, and skincare combined into one seamless session for the moments that matter.</p><div class="dur">2+ hours · from £120</div></div>
       <div class="svc-card"><span class="svc-tag">Event</span><h3>Bridal &amp; Party Styling</h3><p class="desc">On-site teams for wedding parties and events — trial runs, day-of styling, and group coordination.</p><div class="dur">Custom · quoted per group</div></div>
       <div class="svc-card"><span class="svc-tag">Consult</span><h3>Hair Care Consultation</h3><p class="desc">A one-on-one assessment and personalised care plan from a licensed professional.</p><div class="dur">30 minutes · from £25</div></div>
-      <div class="svc-card"><span class="svc-tag" style="color:var(--rose);">Prestige</span><h3>Luxury Manicure</h3><p class="desc">A professional nail treatment at your home — shaping, cuticle care, massage, and your choice of polish or gel finish, using premium products.</p><div class="dur">45–60 minutes · from £40</div></div>
+      <div class="svc-card"><span class="svc-tag" style="color:var(--rose);">Prestige</span><h3>Luxury Manicure</h3><p class="desc">A professional nail treatment at your home — shaping, cuticle care, massage, and your choice of polish or gel finish.</p><div class="dur">45–60 minutes · from £40</div></div>
       <div class="svc-card"><span class="svc-tag" style="color:var(--rose);">Prestige</span><h3>Luxury Pedicure</h3><p class="desc">Full foot and nail treatment delivered to your door — soak, scrub, cuticle care, callus removal, massage, and polish.</p><div class="dur">60–75 minutes · from £50</div></div>
       <div class="svc-card"><span class="svc-tag" style="color:var(--rose);">Prestige</span><h3>Mani-Pedi Combination</h3><p class="desc">The full luxury nail experience — both hands and feet in one session. Perfect for special occasions.</p><div class="dur">90–120 minutes · from £85</div></div>
       <div class="svc-card"><span class="svc-tag">Corporate</span><h3>Hotel &amp; Venue Partnerships</h3><p class="desc">Bulk-booked services for guests and staff, billed directly to the venue.</p><div class="dur">By arrangement</div></div>
@@ -347,7 +402,7 @@
   <div class="page-banner" style="background:var(--ink);color:var(--paper);"><div class="wrap"><span class="crumb" style="color:var(--brass);">Hub 02 · Braids Champs</span><h1>Our braiding specialists, under one roof.</h1><p style="color:var(--paper);opacity:0.75;">Braids Champs is Mane District's dedicated braiding collective — stylists who specialise exclusively in box braids, cornrows, locs, and protective styling.</p></div></div>
   <section class="section braids-section" style="border-bottom:none;"><div class="wrap">
     <div class="braids-grid">
-      <div class="braids-photo"><img src="https://picsum.photos/seed/urbanmane-braids/900/700" alt="Braids Champs stylist" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="braids-photo"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g01.jpg" alt="Braids Champs work" loading="lazy" onerror="this.style.display='none'"></div>
       <div>
         <ul class="braids-list">
           <li><span><span class="style-name">Knotless Box Braids</span><span class="style-dur">3–5 hours</span></span><span class="style-price">from £85</span></li>
@@ -361,6 +416,32 @@
           <a href="mailto:urbanmane@protonmail.com?subject=Braids%20Champs%20enquiry" class="btn-ghost" style="color:var(--paper);">Ask a question</a>
         </div>
       </div>
+    </div>
+    <div style="margin-top:64px;">
+      <span class="gallery-badge">✓ Real work · Verified Braids Champs stylists</span>
+      <h2 style="font-size:1.6rem;color:var(--paper);margin-bottom:8px;">The work speaks for itself.</h2>
+      <p style="color:var(--paper);opacity:0.7;font-size:0.95rem;max-width:560px;line-height:1.6;">Every style below was completed by a Braids Champs professional in a client's home or on location. No salon. No commute. Just results.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g00.jpg','Cornrows — sunburst design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g00.jpg" alt="Cornrows — sunburst design" loading="lazy"><div class="g-label">Cornrows — sunburst design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g01.jpg','Knotless box braids — auburn')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g01.jpg" alt="Knotless box braids — auburn" loading="lazy"><div class="g-label">Knotless box braids — auburn</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g02.jpg','Cornrows — curved design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g02.jpg" alt="Cornrows — curved design" loading="lazy"><div class="g-label">Cornrows — curved design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g03.jpg','Box braids — auburn tones')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g03.jpg" alt="Box braids — auburn tones" loading="lazy"><div class="g-label">Box braids — auburn tones</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g04.jpg','Cornrows — side design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g04.jpg" alt="Cornrows — side design" loading="lazy"><div class="g-label">Cornrows — side design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g05.jpg','Cornrows in progress')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g05.jpg" alt="Cornrows in progress" loading="lazy"><div class="g-label">Cornrows in progress</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g06.jpg','Box braids — rich auburn')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g06.jpg" alt="Box braids — rich auburn" loading="lazy"><div class="g-label">Box braids — rich auburn</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g07.jpg','Cornrows — heart design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g07.jpg" alt="Cornrows — heart design" loading="lazy"><div class="g-label">Cornrows — heart design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g08.jpg','Cornrows — outdoor side')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g08.jpg" alt="Cornrows — outdoor side" loading="lazy"><div class="g-label">Cornrows — outdoor side</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g09.jpg','Cornrows — outdoor top view')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g09.jpg" alt="Cornrows — outdoor top view" loading="lazy"><div class="g-label">Cornrows — outdoor top view</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g10.jpg','Cornrows — outdoor finish')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g10.jpg" alt="Cornrows — outdoor finish" loading="lazy"><div class="g-label">Cornrows — outdoor finish</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g11.jpg','Cornrows — geometric pattern')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g11.jpg" alt="Cornrows — geometric pattern" loading="lazy"><div class="g-label">Cornrows — geometric pattern</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g12.jpg','Cornrows — triangle design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g12.jpg" alt="Cornrows — triangle design" loading="lazy"><div class="g-label">Cornrows — triangle design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g13.jpg','Cornrows — diamond design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g13.jpg" alt="Cornrows — diamond design" loading="lazy"><div class="g-label">Cornrows — diamond design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g14.jpg','Cornrows — full head design')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g14.jpg" alt="Cornrows — full head design" loading="lazy"><div class="g-label">Cornrows — full head design</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g15.jpg','Cornrows — back view')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g15.jpg" alt="Cornrows — back view" loading="lazy"><div class="g-label">Cornrows — back view</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g16.jpg','Cornrows — relaxed style')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g16.jpg" alt="Cornrows — relaxed style" loading="lazy"><div class="g-label">Cornrows — relaxed style</div></div>
+        <div class="gallery-item" onclick="openLightbox('https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g17.jpg','Cornrows — curved heart')"><img src="https://raw.githubusercontent.com/UrbanMane/urbanmane/main/gallery/g17.jpg" alt="Cornrows — curved heart" loading="lazy"><div class="g-label">Cornrows — curved heart</div></div>
+      </div>
+      <p class="gallery-note">📸 All photos are real client results taken by Braids Champs stylists. Used with client permission.</p>
     </div>
   </div></section>
 </div>
@@ -411,18 +492,42 @@
 </div>
 
 <div class="page" id="page-cities" data-page="cities">
-  <div class="page-banner"><div class="wrap"><span class="crumb">Hub 06 · Cities We Cover</span><h1>Starting in the UK, growing city by city.</h1></div></div>
+  <div class="page-banner"><div class="wrap"><span class="crumb">Hub 06 · Cities We Cover</span><h1>Mobile beauty, delivered anywhere in the UK.</h1><p>Active in London and Manchester. Accepting bookings nationwide — wherever you are in the UK, submit a request and we'll confirm your nearest available professional.</p></div></div>
   <section class="section" style="border-bottom:none;"><div class="wrap">
     <div class="city-row">
       <div class="city-pill live"><span class="dot"></span>London</div>
       <div class="city-pill live"><span class="dot"></span>Manchester</div>
-      <div class="city-pill soon"><span class="dot"></span>Birmingham — coming soon</div>
-      <div class="city-pill soon"><span class="dot"></span>Bristol — coming soon</div>
-      <div class="city-pill soon"><span class="dot"></span>Edinburgh — coming soon</div>
-      <div class="city-pill soon"><span class="dot"></span>Leeds — coming soon</div>
+      <div class="city-pill soon"><span class="dot"></span>Birmingham</div>
+      <div class="city-pill soon"><span class="dot"></span>Bristol</div>
+      <div class="city-pill soon"><span class="dot"></span>Leeds</div>
+      <div class="city-pill soon"><span class="dot"></span>Edinburgh</div>
+      <div class="city-pill soon"><span class="dot"></span>Sheffield</div>
+      <div class="city-pill soon"><span class="dot"></span>Liverpool</div>
+      <div class="city-pill soon"><span class="dot"></span>Newcastle</div>
+      <div class="city-pill soon"><span class="dot"></span>Nottingham</div>
+      <div class="city-pill soon"><span class="dot"></span>Cardiff</div>
+      <div class="city-pill soon"><span class="dot"></span>Glasgow</div>
+      <div class="city-pill soon"><span class="dot"></span>Leicester</div>
+      <div class="city-pill soon"><span class="dot"></span>Coventry</div>
+      <div class="city-pill soon"><span class="dot"></span>Brighton</div>
+      <div class="city-pill soon"><span class="dot"></span>Southampton</div>
+      <div class="city-pill soon"><span class="dot"></span>Oxford</div>
+      <div class="city-pill soon"><span class="dot"></span>Cambridge</div>
+      <div class="city-pill soon"><span class="dot"></span>Reading</div>
+      <div class="city-pill soon"><span class="dot"></span>Milton Keynes</div>
     </div>
     <div class="city-banner"><img src="https://picsum.photos/seed/urbanmane-cities/1600/600" alt="UK city" loading="lazy" onerror="this.style.display='none'"></div>
-    <div style="margin-top:40px;"><a href="#book" class="btn-primary" data-link="book">Book in your city →</a></div>
+    <div style="margin-top:40px;"><a href="#book" class="btn-primary" data-link="book">Book anywhere in the UK →</a></div>
+    <div style="margin-top:56px;padding:32px;background:var(--paper-2);border-radius:8px;border:1px solid var(--line);">
+      <h3 style="font-size:1.2rem;margin-bottom:12px;">Not sure if we cover your area?</h3>
+      <p style="font-size:0.92rem;opacity:0.8;line-height:1.6;max-width:640px;margin-bottom:20px;">Submit a booking request with your postcode — if we have a professional in your area, we will confirm immediately. No charges for submitting a request.</p>
+      <a href="#book" class="btn-primary" data-link="book">Submit a booking request →</a>
+    </div>
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="padding:20px;background:var(--paper-2);border-radius:6px;border:1px solid var(--line);"><div style="font-weight:600;font-family:'Fraunces',serif;margin-bottom:6px;">Mobile Hair London</div><p style="font-size:0.82rem;opacity:0.7;margin:0;line-height:1.5;">Hairstylists, braiders and nail technicians across all London boroughs. Same-day and next-day available.</p></div>
+      <div style="padding:20px;background:var(--paper-2);border-radius:6px;border:1px solid var(--line);"><div style="font-weight:600;font-family:'Fraunces',serif;margin-bottom:6px;">Mobile Hair Manchester</div><p style="font-size:0.82rem;opacity:0.7;margin:0;line-height:1.5;">Covering central Manchester, Salford, Trafford, Stockport and surrounding areas.</p></div>
+      <div style="padding:20px;background:var(--paper-2);border-radius:6px;border:1px solid var(--line);"><div style="font-weight:600;font-family:'Fraunces',serif;margin-bottom:6px;">Nationwide Braiding</div><p style="font-size:0.82rem;opacity:0.7;margin:0;line-height:1.5;">Braids Champs specialists for box braids, cornrows and protective styles — available across the UK.</p></div>
+    </div>
   </div></section>
 </div>
 
@@ -501,7 +606,7 @@
 </div>
 
 <div class="page" id="page-admin" data-page="admin">
-  <div class="page-banner"><div class="wrap"><span class="crumb">Staff Only</span><h1>Operations dashboard.</h1><p>Manage live bookings and stylist applications. Restricted to Mane District staff accounts.</p></div></div>
+  <div class="page-banner"><div class="wrap"><span class="crumb">Staff Only</span><h1>Operations dashboard.</h1></div></div>
   <section class="section" style="border-bottom:none;"><div class="wrap">
     <div class="config-warning" id="adminBackendWarning"><strong>Backend not yet connected.</strong> Add Supabase keys before staff can sign in.</div>
     <div class="form-box admin-login" id="adminLoginBox">
@@ -510,11 +615,10 @@
         <div class="field"><label for="adminPassword">Password</label><input type="password" id="adminPassword" required placeholder="••••••••"></div>
         <button type="submit" class="submit-btn">Sign in</button>
         <p class="admin-error" id="adminLoginError">Incorrect email or password.</p>
-        <p class="form-note">Staff accounts are created in Supabase Authentication.</p>
       </form>
     </div>
     <div class="admin-panel" id="adminPanel">
-      <div class="admin-topbar"><div id="adminWho" style="font-size:0.92rem;opacity:0.7;"></div><button class="admin-logout" id="adminLogout">Sign out</button></div>
+      <div class="admin-topbar"><div id="adminWho"></div><button class="admin-logout" id="adminLogout">Sign out</button></div>
       <div class="admin-tabs"><button class="admin-tab active" data-tab="bookings">Bookings</button><button class="admin-tab" data-tab="applications">Applications</button></div>
       <div class="admin-table-wrap" id="bookingsTableWrap">
         <table class="admin-table"><thead><tr><th>Name</th><th>Service</th><th>City</th><th>Date</th><th>Time</th><th>Address</th><th>Status</th></tr></thead><tbody id="bookingsTableBody"></tbody></table>
@@ -526,8 +630,8 @@
       </div>
     </div>
   </div></section>
-                                                                                                                                                                                         </div>
-     <div class="page" id="page-products" data-page="products">
+                                              </div>
+                                              <div class="page" id="page-products" data-page="products">
   <div class="page-banner"><div class="wrap"><span class="crumb">Hub 11 · Products</span><h1>What the professionals actually use.</h1><p>Trusted, widely-recommended skin, hair, and makeup products for clients and professionals on Mane District and Braids Champs.</p></div></div>
   <section class="section" style="border-bottom:none;"><div class="wrap">
     <div class="product-search-bar">
@@ -541,7 +645,6 @@
         <button class="filter-pill" data-filter="makeup">Makeup</button>
       </div>
     </div>
-
     <div class="product-group" data-group="textured">
       <h3>Hair Care — Textured, Curly &amp; Coily Hair</h3>
       <p class="group-sub">Formulated for coils, curls, and protective styles. Widely used across the natural hair community and recommended for clients booking braiding, twist-outs, and moisture-focused styling.</p>
@@ -554,7 +657,6 @@
         <div class="product-card" data-category="textured" data-search="adwoa beauty baomint leave in conditioner salon coils curls moisture"><span class="product-brand">Adwoa Beauty</span><div class="product-name">Baomint Leave-In Conditioner</div><p class="product-desc">Salon-favoured for slip and moisture on wash day — gives definition and softness to coils and curls.</p><div class="product-price">££ · Premium</div><a href="https://www.awin1.com/cread.php?awinmid=106925&awinaffid=2957469&clickref=&p=https://www.lookfantastic.com/search?q=adwoa+beauty+baomint+leave+in" target="_blank" class="product-shop">Shop now →</a></div>
       </div>
     </div>
-
     <div class="product-group" data-group="straight">
       <h3>Hair Care — Fine, Straight &amp; Colour-Treated Hair</h3>
       <p class="group-sub">Bond-repair, weightless hydration, and heat protection for fine and straight hair textures and frequent colour or heat styling.</p>
@@ -567,7 +669,6 @@
         <div class="product-card" data-category="straight" data-search="the ordinary multi peptide serum hair density thinning peptide"><span class="product-brand">The Ordinary</span><div class="product-name">Multi-Peptide Serum for Hair Density</div><p class="product-desc">An affordable peptide serum for early-stage thinning — a good entry point before considering medicated treatments.</p><div class="product-price">£ · Affordable</div><a href="https://www.awin1.com/cread.php?awinmid=106925&awinaffid=2957469&clickref=&p=https://www.lookfantastic.com/search?q=the+ordinary+multi+peptide+hair+serum" target="_blank" class="product-shop">Shop now →</a></div>
       </div>
     </div>
-
     <div class="product-group" data-group="skincare">
       <h3>Skincare — All Skin Tones &amp; Types</h3>
       <p class="group-sub">Dermatologist-favoured staples for daily skincare and pre-appointment prep, suited to a wide range of skin types and tones.</p>
@@ -578,12 +679,11 @@
         <div class="product-card" data-category="skincare" data-search="clinique even better clinical dark spot corrector hyperpigmentation uneven tone dermatologist"><span class="product-brand">Clinique</span><div class="product-name">Even Better Clinical Dark Spot Corrector</div><p class="product-desc">Targets hyperpigmentation and uneven tone — dermatologist-tested across a wide range of skin tones.</p><div class="product-price">££ · Premium</div><a href="https://www.awin1.com/cread.php?awinmid=106925&awinaffid=2957469&clickref=&p=https://www.lookfantastic.com/search?q=clinique+even+better+dark+spot+corrector" target="_blank" class="product-shop">Shop now →</a></div>
       </div>
     </div>
-
     <div class="product-group" data-group="kbeauty">
       <h3>K-Beauty &amp; Asian Skincare</h3>
       <p class="group-sub">Ingredient-led Korean and Asian beauty formulations — widely loved for their effectiveness across all skin tones and textures. Sourced via Stylevana, one of the UK's leading K-beauty retailers.</p>
       <div class="product-grid">
-        <div class="product-card" data-category="kbeauty" data-search="cosrx snail mucin 96 essence hydration barrier repair korean beauty k-beauty"><span class="product-brand">COSRX</span><div class="product-name">Advanced Snail 96 Mucin Power Essence</div><p class="product-desc">A cult Korean essence for deep hydration and skin barrier repair — 96% snail secretion filtrate works on all skin tones and types, including sensitive.</p><div class="product-price">£ · Affordable</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=cosrx+snail+mucin" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
+        <div class="product-card" data-category="kbeauty" data-search="cosrx snail mucin 96 essence hydration barrier repair korean beauty"><span class="product-brand">COSRX</span><div class="product-name">Advanced Snail 96 Mucin Power Essence</div><p class="product-desc">A cult Korean essence for deep hydration and skin barrier repair — 96% snail secretion filtrate works on all skin tones and types, including sensitive.</p><div class="product-price">£ · Affordable</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=cosrx+snail+mucin" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
         <div class="product-card" data-category="kbeauty" data-search="some by mi aha bha pha 30 days miracle toner exfoliant acne pores korean"><span class="product-brand">Some By Mi</span><div class="product-name">AHA BHA PHA 30 Days Miracle Toner</div><p class="product-desc">A triple-acid exfoliating toner for clearer skin in 30 days — popular for reducing acne, uneven texture, and clogged pores across all skin tones.</p><div class="product-price">£ · Affordable</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=some+by+mi+aha+bha+pha+toner" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
         <div class="product-card" data-category="kbeauty" data-search="laneige water sleeping mask overnight hydration glow k-beauty korean"><span class="product-brand">Laneige</span><div class="product-name">Water Sleeping Mask</div><p class="product-desc">A bestselling overnight mask that delivers concentrated moisture while you sleep — wake up to visibly plumper, more radiant skin.</p><div class="product-price">££ · Premium</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=laneige+water+sleeping+mask" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
         <div class="product-card" data-category="kbeauty" data-search="innisfree green tea seed hyaluronic serum hydration oily combination korean"><span class="product-brand">Innisfree</span><div class="product-name">Green Tea Seed Hyaluronic Serum</div><p class="product-desc">A lightweight serum packed with Jeju green tea and five types of hyaluronic acid — excellent for oily and combination skin needing moisture without heaviness.</p><div class="product-price">£ · Affordable</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=innisfree+green+tea+seed+hyaluronic+serum" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
@@ -591,7 +691,6 @@
         <div class="product-card" data-category="kbeauty" data-search="dr jart cicapair tiger grass colour correcting redness soothing calming sensitive"><span class="product-brand">Dr. Jart+</span><div class="product-name">Cicapair Tiger Grass Colour Correcting Treatment</div><p class="product-desc">A green-to-beige colour corrector that neutralises redness and soothes sensitive or irritated skin — works beautifully under makeup or alone.</p><div class="product-price">££ · Premium</div><a href="https://www.awin1.com/cread.php?awinmid=90791&awinaffid=2957469&clickref=&p=https://www.stylevana.com/en_GB/search?q=dr+jart+cicapair+tiger+grass" target="_blank" class="product-shop">Shop on Stylevana →</a></div>
       </div>
     </div>
-
     <div class="product-group" data-group="makeup">
       <h3>Makeup — Inclusive Shade Ranges</h3>
       <p class="group-sub">Foundation and base products from brands recognised for genuinely wide shade and undertone ranges, suitable for makeup artists working across diverse client complexions.</p>
@@ -602,9 +701,8 @@
         <div class="product-card" data-category="makeup" data-search="rare beauty liquid touch weightless foundation 48 shades undertone skin like finish"><span class="product-brand">Rare Beauty</span><div class="product-name">Liquid Touch Weightless Foundation</div><p class="product-desc">48 shades across six undertone groups, with a lightweight, skin-like finish.</p><div class="product-price">££ · Premium</div><a href="https://www.awin1.com/cread.php?awinmid=106925&awinaffid=2957469&clickref=&p=https://www.lookfantastic.com/search?q=rare+beauty+liquid+touch+foundation" target="_blank" class="product-shop">Shop now →</a></div>
       </div>
     </div>
-
     <div class="provider-callout"><h3>Are you a stylist, braider, or makeup artist?</h3><p>Apply to join Mane District or Braids Champs to get booked by clients directly through this platform.</p><a href="#apply" class="btn-primary" data-link="apply">Apply to join →</a></div>
-    <div class="affiliate-note"><strong>How this page makes money:</strong> "Shop now" links are affiliate links via Awin (Publisher ID: 2957469). If you buy through them, Mane District may earn a small commission at no extra cost to you.<br><br><strong>Active merchant programmes:</strong> Hair and beauty products link to <strong>MyBeauty.Boutique</strong> (mid: 106925) via LookFantastic. K-beauty and Asian skincare products link to <strong>Stylevana</strong> (mid: 90791) directly.</div>
+    <div class="affiliate-note"><strong>How this page makes money:</strong> "Shop now" links are affiliate links via Awin (Publisher ID: 2957469). If you buy through them, Mane District may earn a small commission at no extra cost to you.<br><br><strong>Active merchants:</strong> Hair and beauty products → <strong>MyBeauty.Boutique</strong> (mid: 106925) via LookFantastic. K-beauty → <strong>Stylevana</strong> (mid: 90791) directly.</div>
   </div></section>
 </div>
 
@@ -630,7 +728,7 @@
     <div class="legal-content">
       <p class="legal-updated">Last updated: 12 July 2026</p>
       <h2>Using this platform</h2><p>By submitting a booking or application, you agree to these terms.</p>
-      <h2>Bookings</h2><p>Submitting a booking request is not a guaranteed confirmation — we'll confirm your stylist by email. Prices shown are starting prices. Optional deposits are processed via Stripe and are refundable with 24 hours notice. A valid UK postcode is required for all bookings to enable stylist assignment.</p>
+      <h2>Bookings</h2><p>Submitting a booking request is not a guaranteed confirmation — we'll confirm your stylist by email. Prices shown are starting prices. Optional deposits are processed via Stripe and are refundable with 24 hours notice. A valid UK postcode is required for all bookings.</p>
       <h2>Professionals</h2><p>Stylists operate as independent professionals, not employees of Mane District. Acceptance requires a valid Enhanced DBS certificate verified by our team. We may remove any professional where client safety is a concern.</p>
       <h2>Liability</h2><p>Mane District facilitates introductions between clients and independent professionals. We are not liable for the specific outcome of any individual service. Each professional is responsible for their own insurance.</p>
       <h2>Affiliate links</h2><p>Our Products page contains affiliate links to MyBeauty.Boutique and Stylevana via Awin. We may earn a commission if you purchase through them, at no extra cost to you.</p>
@@ -658,10 +756,10 @@
   <section class="section" style="border-bottom:none;"><div class="wrap">
     <div class="faq-list">
       <details class="faq-item"><summary>How do I book a stylist?</summary><p>Go to Book a Stylist, choose your service, date, time, street address and postcode, and submit. We'll confirm your stylist match by email.</p></details>
-      <details class="faq-item"><summary>Why do you need my postcode?</summary><p>Your postcode is verified against the official UK postcode database so we can assign the nearest available professional to your area. We never share your address with anyone other than your confirmed stylist.</p></details>
+      <details class="faq-item"><summary>Why do you need my postcode?</summary><p>Your postcode is verified against the official UK postcode database so we can assign the nearest available professional. We never share your address with anyone other than your confirmed stylist.</p></details>
       <details class="faq-item"><summary>Is payment taken upfront?</summary><p>No payment is required to submit a booking. You can optionally secure your slot with a refundable £15 deposit via Stripe.</p></details>
       <details class="faq-item"><summary>Are stylists background-checked?</summary><p>Yes. Every professional holds a valid Enhanced DBS certificate, personally reviewed by our team before they can accept bookings.</p></details>
-      <details class="faq-item"><summary>Which cities do you operate in?</summary><p>Currently London and Manchester. Birmingham, Bristol, Edinburgh, and Leeds launching soon.</p></details>
+      <details class="faq-item"><summary>Which cities do you operate in?</summary><p>We are currently live in London and Manchester, and accepting booking requests from anywhere in the UK. Submit your request with your postcode and we will confirm the nearest available professional in your area.</p></details>
       <details class="faq-item"><summary>How do I become a stylist on the platform?</summary><p>Visit Apply to Join and submit your details. Our team will follow up to begin vetting and DBS verification.</p></details>
       <details class="faq-item"><summary>Can I cancel or reschedule?</summary><p>Yes — email urbanmane@protonmail.com with your booking details as early as possible. Deposits are refundable with 24 hours notice.</p></details>
     </div>
@@ -697,7 +795,18 @@
             <option>Prestige — Luxury Pedicure</option>
             <option>Prestige — Mani-Pedi Combination</option>
           </select></div>
-          <div class="field"><label for="city">City</label><select id="city"><option>London</option><option>Manchester</option></select></div>
+          <div class="field"><label for="city">City / Region</label><select id="city">
+            <optgroup label="✓ Live Now"><option>London</option><option>Manchester</option></optgroup>
+            <optgroup label="Accepting Requests Nationwide">
+              <option>Birmingham</option><option>Bristol</option><option>Leeds</option>
+              <option>Edinburgh</option><option>Sheffield</option><option>Liverpool</option>
+              <option>Newcastle</option><option>Nottingham</option><option>Cardiff</option>
+              <option>Glasgow</option><option>Leicester</option><option>Coventry</option>
+              <option>Brighton</option><option>Southampton</option><option>Oxford</option>
+              <option>Cambridge</option><option>Reading</option><option>Milton Keynes</option>
+              <option>Other UK location</option>
+            </optgroup>
+          </select></div>
         </div>
         <div class="field-row">
           <div class="field"><label for="date">Date</label><input type="date" id="date" required></div>
@@ -726,6 +835,12 @@
   </div></section>
 </div>
 
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -739,7 +854,7 @@
     </div>
     <div class="foot-bottom"><span>© 2026 Mane District Ltd. All rights reserved. · urbanmane@protonmail.com</span><span>Licensed &amp; insured beauty services across the UK. · <a href="#admin" data-link="admin" style="opacity:0.7;">Staff login</a></span></div>
   </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  </footer>    
+ </footer>
  <script>
   const SUPABASE_URL = 'https://lwyduqmrimgdowbyrgwy.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3eWR1cW1yaW1nZG93YnlyZ3d5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY1NTUsImV4cCI6MjA5Nzc0MjU1NX0.mgvlI7XNd9BCBAJ_pAT5g5UIWwtKN_ejxRwrJyKrKgw';
@@ -753,9 +868,7 @@
       if(typeof supabase === 'undefined') throw new Error('Supabase CDN not loaded');
       supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
       backendConfigured = true;
-    }catch(err){
-      console.error('Supabase fallback to email mode:', err);
-    }
+    }catch(err){ console.error('Supabase fallback to email mode:', err); }
   }
 
   const pages = document.querySelectorAll('.page');
@@ -818,7 +931,6 @@
   // ---------- POSTCODE VERIFICATION ----------
   let postcodeValid = false;
   let postcodeTimer = null;
-
   const postcodeInput = document.getElementById('postcode');
   const postcodeStatus = document.getElementById('postcodeStatus');
   const postcodeArea = document.getElementById('postcodeArea');
@@ -857,10 +969,7 @@
         postcodeArea.style.display='none';
         postcodeError.style.display='block';
       }
-    }catch(err){
-      postcodeValid=true;
-      postcodeStatus.textContent='';
-    }
+    }catch(err){ postcodeValid=true; postcodeStatus.textContent=''; }
   }
 
   if(postcodeInput){
@@ -982,7 +1091,7 @@
     banner.classList.add('show');
   });
 
-  // ---------- ADMIN PANEL ----------
+  // ---------- ADMIN ----------
   function setAdminSignedIn(isSignedIn,email){
     document.getElementById('adminLoginBox').style.display=isSignedIn?'none':'block';
     document.getElementById('adminPanel').classList.toggle('show',isSignedIn);
@@ -1059,6 +1168,19 @@
       aBody.appendChild(tr);
     });
   }
+
+  // ---------- LIGHTBOX ----------
+  function openLightbox(src,caption){
+    document.getElementById('lightboxImg').src=src;
+    document.getElementById('lightboxCaption').textContent=caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(); });
 
   // ---------- PRODUCT SEARCH & FILTER ----------
   const productSearch=document.getElementById('productSearch');
