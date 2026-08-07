@@ -559,7 +559,11 @@
     </div>
     <div class="form-box">
       <form id="applyForm">
-        <div class="field"><label for="apName">Full name</label><input type="text" id="apName" required placeholder="Your name"></div>
+        <div class="field"><label for="name">Full name</label><input type="text" id="name" required placeholder="Jordan Smith"></div>
+<div class="field-row">
+  <div class="field"><label for="bookEmail">Email</label><input type="email" id="bookEmail" required placeholder="you@example.com"></div>
+  <div class="field"><label for="bookPhone">Phone</label><input type="tel" id="bookPhone" required placeholder="07…"></div>
+</div>
         <div class="field-row">
           <div class="field"><label for="apEmail">Email</label><input type="email" id="apEmail" required placeholder="you@example.com"></div>
           <div class="field"><label for="apPhone">Phone</label><input type="tel" id="apPhone" required placeholder="07…"></div>
@@ -990,6 +994,8 @@
     e.preventDefault();
     const btn = this.querySelector('.submit-btn');
     const name = document.getElementById('name').value.trim();
+const bookEmail = document.getElementById('bookEmail').value.trim();
+const bookPhone = document.getElementById('bookPhone').value.trim();
     const service = document.getElementById('service').value;
     const city = document.getElementById('city').value;
     const date = document.getElementById('date').value;
@@ -998,6 +1004,8 @@
     const postcode = (document.getElementById('postcode')?.value||'').trim().toUpperCase();
     const errors = [];
     if(!name||name.length<2) errors.push('Please enter your full name.');
+if(!bookEmail||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bookEmail)) errors.push('Please enter a valid email address.');
+if(!bookPhone||!/^[\d\s\+\-\(\)]{7,15}$/.test(bookPhone)) errors.push('Please enter a valid phone number.');
     if(!address||address.length<3) errors.push('Please enter your street address.');
     if(!postcode) errors.push('Please enter your postcode.');
     else if(!postcodeValid) errors.push('Please enter a valid UK postcode — we need this to assign your nearest stylist.');
@@ -1013,13 +1021,13 @@
     if(backendConfigured){
       btn.textContent='Submitting…'; btn.disabled=true;
       try{
-        const {error}=await supabaseClient.from('bookings').insert([{name,service,city,booking_date:date,booking_time:time,address:fullAddress,status:'requested'}]);
+        const {error}=await supabaseClient.from('bookings').insert([{name,email:bookEmail,phone:bookPhone,service,city,booking_date:date,booking_time:time,address:fullAddress,status:'requested'}]);
         if(error) throw error;
         finish(); return;
       }catch(err){ console.error('Booking insert failed:',err); }
     }
     const subj=encodeURIComponent(`Booking request — ${service} in ${city}`);
-    const body=encodeURIComponent(`New booking request\n\nName: ${name}\nService: ${service}\nCity: ${city}\nDate: ${date}\nTime: ${time}\nAddress: ${fullAddress}\n`);
+    const body=encodeURIComponent(`New booking request\n\nName: ${name}\nEmail: ${bookEmail}\nPhone: ${bookPhone}\nService: ${service}\nCity: ${city}\nDate: ${date}\nTime: ${time}\nAddress: ${fullAddress}\n`);
     window.location.href=`mailto:urbanmane@protonmail.com?subject=${subj}&body=${body}`;
     finish();
   });
