@@ -1192,7 +1192,8 @@ if(!error) sendConfirmEmail(email, name, token);
     document.getElementById('bookingsEmpty').style.display=(bookings&&bookings.length)?'none':'block';
     (bookings||[]).forEach(b=>{
       const tr=document.createElement('tr');
-      tr.innerHTML=`<td>${b.name||''}</td><td>${b.service||''}</td><td>${b.city||''}</td><td>${b.booking_date||''}</td><td>${b.booking_time||''}</td><td>${b.address||''}</td>`;
+      const bConfirmBadge = b.email_confirmed ? '<span class="confirm-badge yes">✓ Verified</span>' : '<span class="confirm-badge no">Unconfirmed</span>';
+tr.innerHTML=`<td>${b.name||''}</td><td>${b.service||''}</td><td>${b.city||''}</td><td>${b.booking_date||''}</td><td>${b.booking_time||''}</td><td>${b.address||''}</td><td>${b.email||''}</td><td>${b.phone||''}</td><td>${bConfirmBadge}</td>`;
       const td=document.createElement('td'); td.appendChild(statusSelect('bookings',b.id,b.status,BOOKING_STATUSES)); tr.appendChild(td);
       bBody.appendChild(tr);
     });
