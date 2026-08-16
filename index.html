@@ -229,6 +229,9 @@
   table.admin-table tr:last-child td{border-bottom:none;}
   table.admin-table select{padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--paper);font-size:0.85rem;}
   .admin-empty{padding:32px;text-align:center;opacity:0.6;font-size:0.92rem;}
+  .confirm-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.confirm-badge.yes{background:rgba(46,125,50,0.15);color:#2e7d32;}
+.confirm-badge.no{background:rgba(166,88,79,0.15);color:var(--rose);}
   .admin-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
   .admin-logout{font-size:0.85rem;text-decoration:underline;cursor:pointer;opacity:0.7;background:none;border:none;font-family:'Work Sans',sans-serif;color:var(--ink);}
   .admin-error{display:none;color:var(--rose);font-size:0.88rem;margin-top:10px;}.admin-error.show{display:block;}
@@ -623,11 +626,11 @@
       <div class="admin-topbar"><div id="adminWho"></div><button class="admin-logout" id="adminLogout">Sign out</button></div>
       <div class="admin-tabs"><button class="admin-tab active" data-tab="bookings">Bookings</button><button class="admin-tab" data-tab="applications">Applications</button></div>
       <div class="admin-table-wrap" id="bookingsTableWrap">
-        <table class="admin-table"><thead><tr><th>Name</th><th>Service</th><th>City</th><th>Date</th><th>Time</th><th>Address</th><th>Status</th></tr></thead><tbody id="bookingsTableBody"></tbody></table>
+        <table class="admin-table"><thead><tr><th>Name</th><th>Service</th><th>City</th><th>Date</th><th>Time</th><th>Address</th><th>Email</th><th>Phone</th><th>Verified</th><th>Status</th></tr></thead><tbody id="bookingsTableBody"></tbody></table>
         <div class="admin-empty" id="bookingsEmpty" style="display:none;">No bookings yet.</div>
       </div>
       <div class="admin-table-wrap" id="applicationsTableWrap" style="display:none;">
-        <table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>City</th><th>Specialty</th><th>Experience</th><th>DBS Cert.</th><th>DBS Verified</th><th>Status</th></tr></thead><tbody id="applicationsTableBody"></tbody></table>
+        <table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Verified</th><th>Phone</th><th>City</th><th>Specialty</th><th>Experience</th><th>DBS Cert.</th><th>DBS Verified</th><th>Status</th></tr></thead><tbody id="applicationsTableBody"></tbody></table>
         <div class="admin-empty" id="applicationsEmpty" style="display:none;">No applications yet.</div>
       </div>
     </div>
@@ -1199,7 +1202,8 @@ if(!error) sendConfirmEmail(email, name, token);
     document.getElementById('applicationsEmpty').style.display=(apps&&apps.length)?'none':'block';
     (apps||[]).forEach(a=>{
       const tr=document.createElement('tr');
-      tr.innerHTML=`<td>${a.name||''}</td><td>${a.email||''}</td><td>${a.phone||''}</td><td>${a.city||''}</td><td>${a.specialty||''}</td><td style="max-width:200px;">${a.experience||''}</td><td>${a.dbs_certificate_number||'—'}</td>`;
+      const aConfirmBadge = a.email_confirmed ? '<span class="confirm-badge yes">✓ Verified</span>' : '<span class="confirm-badge no">Unconfirmed</span>';
+tr.innerHTML=`<td>${a.name||''}</td><td>${a.email||''}</td><td>${aConfirmBadge}</td><td>${a.phone||''}</td><td>${a.city||''}</td><td>${a.specialty||''}</td><td style="max-width:200px;">${a.experience||''}</td><td>${a.dbs_certificate_number||'—'}</td>`;
       const dbsTd=document.createElement('td');
       const dbsCb=document.createElement('input'); dbsCb.type='checkbox'; dbsCb.checked=!!a.dbs_verified; dbsCb.style.width='18px'; dbsCb.style.height='18px';
       dbsCb.addEventListener('change',async()=>{ await supabaseClient.from('applications').update({dbs_verified:dbsCb.checked}).eq('id',a.id); });
