@@ -297,6 +297,7 @@
   @media(prefers-reduced-motion:reduce){*{transition:none !important;}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
  <nav>
@@ -861,6 +862,20 @@
   </div>
  </footer>
  <script>
+   emailjs.init('iufIBkRExuiKTcuIY');
+
+async function sendConfirmEmail(toEmail, name, token){
+  const confirmLink = `https://manedistrict.vercel.app/#confirm-${token}`;
+  try{
+    await emailjs.send('service_hk2bfoj', 'template_dxerd3s', {
+      to_email: toEmail,
+      name: name,
+      confirm_link: confirmLink
+    });
+  }catch(err){
+    console.error('Confirmation email failed to send:', err);
+  }
+}
   const SUPABASE_URL = 'https://lwyduqmrimgdowbyrgwy.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3eWR1cW1yaW1nZG93YnlyZ3d5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNjY1NTUsImV4cCI6MjA5Nzc0MjU1NX0.mgvlI7XNd9BCBAJ_pAT5g5UIWwtKN_ejxRwrJyKrKgw';
 
@@ -898,10 +913,22 @@
     if(id==='admin' && backendConfigured) checkAdminSession();
   }
 
-  function routeFromHash(){
-    const id = (window.location.hash||'#home').replace('#','');
-    goTo(id);
+async function routeFromHash(){
+  const hash = window.location.hash || '#home';
+  if(hash.startsWith('#confirm-')){
+    const token = hash.replace('#confirm-','');
+    let confirmed = false;
+    const b = await supabaseClient.from('bookings').update({email_confirmed:true}).eq('confirm_token',token).select();
+    if(b.data && b.data.length) confirmed = true;
+    const a = await supabaseClient.from('applications').update({email_confirmed:true}).eq('confirm_token',token).select();
+    if(a.data && a.data.length) confirmed = true;
+    goTo('home');
+    alert(confirmed ? 'Thanks — your email is confirmed!' : 'This confirmation link is invalid or has already been used.');
+    return;
   }
+  const id = hash.replace('#','');
+  goTo(id);
+}
 
   function navigate(id){
     try{
@@ -1022,7 +1049,9 @@ if(!bookPhone||!/^[\d\s\+\-\(\)]{7,15}$/.test(bookPhone)) errors.push('Please en
     if(backendConfigured){
       btn.textContent='Submitting…'; btn.disabled=true;
       try{
-        const {error}=await supabaseClient.from('bookings').insert([{name,email:bookEmail,phone:bookPhone,service,city,booking_date:date,booking_time:time,address:fullAddress,status:'requested'}]);
+        const token = crypto.randomUUID();
+const {error}=await supabaseClient.from('bookings').insert([{name,email:bookEmail,phone:bookPhone,service,city,booking_date:date,booking_time:time,address:fullAddress,status:'requested',confirm_token:token}]);
+if(!error) sendConfirmEmail(bookEmail, name, token);
         if(error) throw error;
         finish(); return;
       }catch(err){ console.error('Booking insert failed:',err); }
@@ -1063,7 +1092,9 @@ if(!bookPhone||!/^[\d\s\+\-\(\)]{7,15}$/.test(bookPhone)) errors.push('Please en
     if(backendConfigured){
       btn.textContent='Submitting…'; btn.disabled=true;
       try{
-        const {error}=await supabaseClient.from('applications').insert([{name,email,phone,city,specialty,experience:exp,status:'submitted',dbs_certificate_number:dbsNumber,dbs_consent:dbsConsent,dbs_verified:false}]);
+        const token = crypto.randomUUID();
+const {error}=await supabaseClient.from('applications').insert([{name,email,phone,city,specialty,experience:exp,status:'submitted',dbs_certificate_number:dbsNumber,dbs_consent:dbsConsent,dbs_verified:false,confirm_token:token}]);
+if(!error) sendConfirmEmail(email, name, token);
         if(error) throw error;
         finish(); return;
       }catch(err){ console.error('Application insert failed:',err); }
